@@ -5,10 +5,27 @@
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="fa/wf/css/fontawesome-all.css">
     <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular-route.js"></script>
+    <script > 
+    var app = angular.module("myApp", ["ngRoute"]);
+app.config(function($routeProvider) {
+    $routeProvider
+    .when("/", {
+        templateUrl : "main.htm"
+    })
+    .when("/about", {
+        templateUrl : "about.htm"
+    })
+    .when("/product", {
+        templateUrl : "product.htm"
+    });
+});
+</script>
   </head>
 
   <body>
-  	<div class="container-fluid">
+  	<div ng-app="myApp" class="container-fluid">
   		<div class="row">
       <div class="col-md-12 header">
         <h1>Barokah Mobil</h1>
@@ -16,7 +33,10 @@
       </div>
       <div class="row">
       <div class="col-md-12 menu">
-        Barokah Mobil
+       <a href="#/!"><i class="fas fa-home"></i>Home</a>
+        <a href="#!about">About Me</a>
+        <a href="#!product">Product</a>
+        <ng-view></ng-view>
   	</div>
    </div>
   </body>
